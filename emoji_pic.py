@@ -2,7 +2,6 @@ import sys
 import os
 import imageio
 import numpy as np
-#from scipy.ndimage.filters import gaussian_filter
 
 color_options = {  # rgb to emoji
     'red': (np.array((255,0,0)), '🟥'),
@@ -46,12 +45,6 @@ def main(img_path, n_cols=20):
     n_rows = int(round(n_cols * img_rows / img_cols))
     img_row_stepsize = int(np.ceil(img_rows / n_rows))
     img_col_stepsize = int(np.ceil(img_cols / n_cols))
-
-    """
-    blur_sigma = min(img_row_stepsize, img_col_stepsize) ** (0.5)
-    gb = lambda ind: gaussian_filter(content[:, :, ind:ind+1], sigma=blur_sigma)
-    content = np.concatenate((gb(0), gb(1), gb(2)), axis=2)
-    """
 
     output = []
     for out_row in range(n_rows):
